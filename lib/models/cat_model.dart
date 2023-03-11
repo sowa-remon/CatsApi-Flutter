@@ -19,11 +19,24 @@ class Cat {
   double? width;
   double? height;
 
+  String? breedName;
+  String? temperament;
+  String? origin;
+  String? lifeSpan;
+  String? wikipediaUrl;
+
+
   Cat({
     this.id,
     this.url,
     this.width,
     this.height,
+    
+    this.breedName,
+    this.temperament,
+    this.origin,
+    this.lifeSpan,
+    this.wikipediaUrl
   });
 
   Cat.fromJsonMap(Map<String, dynamic> json) {
@@ -31,6 +44,12 @@ class Cat {
     url = json['url'];
     width = json['width'] / 1;
     height = json['height'] / 1;
+
+    breedName = json['breeds'][0]['name'];
+    temperament = json['breeds'][0]['temperament'];
+    origin = json['breeds'][0]['origin'];
+    lifeSpan = json['breeds'][0]['life_span'];
+    wikipediaUrl = json['breeds'][0]['wikipedia_url'];
   }
 
   // Método para obtener la imagen del gato

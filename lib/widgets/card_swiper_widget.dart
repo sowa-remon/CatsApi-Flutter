@@ -1,3 +1,4 @@
+import 'package:Gatitos/providers/cat_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:Gatitos/models/cat_model.dart';
@@ -9,54 +10,116 @@ class CardSwiper extends StatefulWidget {
 
   @override
   State<CardSwiper> createState() => _CardSwiperState();
+
 }
 
 class _CardSwiperState extends State<CardSwiper> {
-  final _swiperController = SwiperController();
-  int _globalIndex = 0;
 
+  final _scrollController = ScrollController();
+  int _globalIndex = 0;
+  
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
+    //int _limit = widget.cats.length - 10;
 
-    _swiperController.addListener(() {});
-
+    return ListView(
+      children: _crearLista(_screenSize)
+    );
+    
+    /*
     return Container(
       padding: EdgeInsets.only(top: 5),
       width: double.infinity,
       //height: 300,
       child: Swiper(
         onTap: (index) {
-          // No encuentra a cats
-          Navigator.pushNamed(context, 'detail', arguments: cats[index]);
+          Navigator.pushNamed(context, 'detail', arguments: widget.cats[index]);
         },
         controller: _swiperController,
-        layout: SwiperLayout.STACK,
-        itemWidth: _screenSize.width * 0.7,
-        itemHeight: _screenSize.height * 0.4,
+        layout: SwiperLayout.TINDER,
+        itemWidth: _screenSize.width * 0.9,
+        itemHeight: _screenSize.height * 0.5,
         itemBuilder: (BuildContext context, int index) {
           return ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
             child: FadeInImage(
-              // No encuentra a cats
-              image: NetworkImage(cats[index].getCatImage()),
+              image: NetworkImage(widget.cats[index].getCatImage()),
               placeholder: AssetImage('assets/images/no-image.jpg'),
               fit: BoxFit.cover,
             ),
           );
         },
-        onIndexChanged: (value) {
-          _globalIndex = _swiperController.index;
-          if (_globalIndex == 10) {
-            // Cuando llegas al último slide, ejecuta una acción específica aquí
-            print('Llegaste al límite del itemCount del Swiper');
+        onIndexChanged: (index) {
+          setState(() {
+            _globalIndex = index;
+          });
+          
+          print(_globalIndex);
+          if (_globalIndex == _limit) {
+            print('llegaste al límite');
+            getMoreCats();
+            _limit = widget.cats.length - 10;
           }
+          print('limit $_limit');
+
         },
-        // No encuentra a cats
-        itemCount: cats.length,
-        //pagination: SwiperPagination(),
-        //control: SwiperControl(),
+        itemCount: widget.cats.length,
+        // pagination: SwiperPagination(),
+        // control: SwiperControl(),
+      ),
+    );*/
+  }
+
+  List<Widget> _crearLista(Size screenSize) {
+    List<Widget> lista = []; 
+
+    widget.cats.forEach((cat) { 
+      lista.add(_crearCardGato(cat, screenSize));
+    });
+
+    return lista;
+  }
+
+  Widget _crearCardGato(Cat cat, Size screenSize) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          Text(cat.breedName!),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(5.0),
+            child: Container(
+              height: screenSize.height * 0.4,
+              child: FadeInImage(
+                image: NetworkImage(cat.url!),
+                placeholder: AssetImage('assets/images/no-image.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: (() {
+                  Navigator.pushNamed(context, 'detail', arguments: cat);
+                }), 
+                child: Text('Información')
+              ),
+              IconButton(onPressed: () {/* Añadir a favoritos */}, icon: Icon(Icons.favorite), )
+            ],
+          )
+        ],
       ),
     );
   }
+
+  /*
+  void getMoreCats() async {
+    final List<Cat> newCatList = await CatProvider().getCats();
+
+    newCatList.forEach((cat) => widget.cats.add(cat));
+    print('se añadieron gatos');
+  }*/
 }

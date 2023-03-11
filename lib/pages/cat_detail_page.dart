@@ -7,11 +7,19 @@ class CatDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Cat cat = ModalRoute.of(context)!.settings.arguments as Cat;
+
     return Scaffold(
       body: Center(
         child: ListView(
           children: [
-            _getId(cat),
+            Text('Raza'),
+            _getBreed(cat),
+            Text('Temperamento'),
+            _getTemperament(cat),
+            Text('Origen'),
+            _getOrigin(cat),
+            Text('Esperanza de vida'),
+            _getLifeSpan(cat),
           ],
         ),
         /*
@@ -37,8 +45,17 @@ class CatDetail extends StatelessWidget {
     );
   }
 
-  Widget _getId(Cat cat) {
-    return Text(cat.id.toString());
+  Widget _getBreed(Cat cat) {
+    return Text(cat.breedName.toString());
+  }
+  Widget _getTemperament(Cat cat) {
+    return Text(cat.temperament.toString());
+  }
+  Widget _getOrigin(Cat cat) {
+    return Text(cat.origin.toString());
+  }
+  Widget _getLifeSpan(Cat cat) {
+    return Text(cat.lifeSpan.toString());
   }
 
   /*

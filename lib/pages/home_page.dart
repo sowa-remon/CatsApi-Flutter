@@ -15,17 +15,42 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Gatos'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _crearSwiper(),
-          //_crearFooter(context),
+        actions: [
+          TextButton(onPressed: (){}, child: Text('Gatos'), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),),
+          TextButton(onPressed: (){}, child: Text('Favoritos'), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),)
+          // IconButton(
+          //   icon: const Icon(Icons.shopping_cart),
+          //   tooltip: 'Open shopping cart',
+          //   onPressed: () {
+          //     // handle the press
+          //   },
+          // ),
         ],
       ),
+      body: _crearLista(),
     );
   }
 
+  // Crear lista
+  Widget _crearLista() {
+    
+    return FutureBuilder(
+      future: catProvider.getCats(),
+      builder: (context, AsyncSnapshot<List<Cat>> snapshot) {
+        if (snapshot.hasData) {
+          return CardSwiper(cats: snapshot.data!);
+        } else {
+          return Container(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+  /*
   // Método para crear un swiper
   Widget _crearSwiper() {
     return FutureBuilder(
@@ -43,7 +68,7 @@ class HomePage extends StatelessWidget {
         }
       },
     );
-  }
+  }*/
 
   /*
   // Método para crear footer
