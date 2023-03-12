@@ -12,13 +12,13 @@ class CatDetail extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            Text('Raza'),
+            const Text('Raza'),
             _getBreed(cat),
-            Text('Temperamento'),
+            const Text('Temperamento'),
             _getTemperament(cat),
-            Text('Origen'),
+            const Text('Origen'),
             _getOrigin(cat),
-            Text('Esperanza de vida'),
+            const Text('Esperanza de vida'),
             _getLifeSpan(cat),
           ],
         ),

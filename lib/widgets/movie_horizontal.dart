@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:Gatitos/models/cat_model.dart';
 
-/*
+
 class MovieHorizontal extends StatelessWidget {
   final List<Cat> cats;
   final Function siguientePagina;

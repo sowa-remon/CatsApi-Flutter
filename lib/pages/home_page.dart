@@ -14,10 +14,10 @@ class HomePage extends StatelessWidget {
     catProvider.getCats();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gatos'),
+        title: const Text('Gatos'),
         actions: [
-          TextButton(onPressed: (){}, child: Text('Gatos'), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),),
-          TextButton(onPressed: (){}, child: Text('Favoritos'), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),)
+          TextButton(onPressed: (){}, style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)), child: const Text('Gatos'),),
+          TextButton(onPressed: (){}, style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)), child: const Text('Favoritos'),)
           // IconButton(
           //   icon: const Icon(Icons.shopping_cart),
           //   tooltip: 'Open shopping cart',
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
         } else {
           return Container(
             height: 400,
-            child: Center(
+            child: const Center(
               child: CircularProgressIndicator(),
             ),
           );

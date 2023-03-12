@@ -83,7 +83,7 @@ class _CardSwiperState extends State<CardSwiper> {
 
   Widget _crearCardGato(Cat cat, Size screenSize) {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
           Text(cat.breedName!),
@@ -93,7 +93,7 @@ class _CardSwiperState extends State<CardSwiper> {
               height: screenSize.height * 0.4,
               child: FadeInImage(
                 image: NetworkImage(cat.url!),
-                placeholder: AssetImage('assets/images/no-image.jpg'),
+                placeholder: const AssetImage('assets/images/no-image.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -105,9 +105,9 @@ class _CardSwiperState extends State<CardSwiper> {
                 onPressed: (() {
                   Navigator.pushNamed(context, 'detail', arguments: cat);
                 }), 
-                child: Text('Información')
+                child: const Text('Información')
               ),
-              IconButton(onPressed: () {/* Añadir a favoritos */}, icon: Icon(Icons.favorite), )
+              IconButton(onPressed: () {/* Añadir a favoritos */}, icon: const Icon(Icons.favorite), )
             ],
           )
         ],
