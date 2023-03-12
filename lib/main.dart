@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Gatitos/pages/home_page.dart';
-import 'package:Gatitos/pages/cat_detail_page.dart';
+import 'package:gatitos/pages/home_page.dart';
+import 'package:gatitos/pages/cat_detail_page.dart';
 
 void main() => runApp(const MyApp());
 

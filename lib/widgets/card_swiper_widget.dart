@@ -1,7 +1,7 @@
-import 'package:Gatitos/providers/cat_provider.dart';
+import 'package:gatitos/providers/cat_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-import 'package:Gatitos/models/cat_model.dart';
+import 'package:gatitos/models/cat_model.dart';
 
 class CardSwiper extends StatefulWidget {
   final List<Cat> cats;

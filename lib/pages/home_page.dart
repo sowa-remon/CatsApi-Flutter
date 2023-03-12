@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Gatitos/models/cat_model.dart';
-import 'package:Gatitos/providers/cat_provider.dart';
-import 'package:Gatitos/widgets/card_swiper_widget.dart';
-import 'package:Gatitos/widgets/movie_horizontal.dart';
+import 'package:gatitos/models/cat_model.dart';
+import 'package:gatitos/providers/cat_provider.dart';
+import 'package:gatitos/widgets/card_swiper_widget.dart';
+import 'package:gatitos/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
   // const HomePage({super.key});

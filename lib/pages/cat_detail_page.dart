@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Gatitos/models/cat_model.dart';
+import 'package:gatitos/models/cat_model.dart';
 
 class CatDetail extends StatelessWidget {
   const CatDetail({super.key});

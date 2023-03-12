@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:Gatitos/models/cat_model.dart';
+import 'package:gatitos/models/cat_model.dart';
 
 class CatProvider {
   String _url = 'api.thecatapi.com';
   String _api_key = 'live_mcwGebtrOoyL9hbpWE8Iin8EC0QpbzCjg3clI1Dj0pSUShpELIdmu6DhubWHH6Jt';
-  int _limit = 2; // * CAMBIAR LUEGO XD
+  int _limit = 2; // * CAMBIAR LUEGO XD -soda: pense q lo abia roto, quedé :clown: cuando vi q lo abias limitao
 
   List<Cat> _cats = [];
 
